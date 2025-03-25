@@ -1,3 +1,4 @@
+using HolidaySearch.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace holidaysearch.Controllers;
@@ -12,10 +13,12 @@ public class WeatherForecastController : ControllerBase
     };
 
     private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILiteDbContext _liteDbContext;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, ILiteDbContext liteDbContext)
     {
         _logger = logger;
+        _liteDbContext = liteDbContext;
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
